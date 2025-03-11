@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Projetos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background: #04c987;
+            color: white;
+            padding: 20px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        section:hover {
+            transform: scale(1.02);
+        }
+        img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #04c987;
+            ;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #04c987;
+            background-color: rgb(183, 178, 250);
+        }
+        footer {
+            background: #04c987;
+            color: white;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Portfólio de Projetos</h1>
+        <nav>
+            <ul>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#app">Interface de App</a></li>
+                <li><a href="#analise">Análise de Dados</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="dashboard">
+        <h2>Dashboard de Análises</h2>
+        <img src="dahs.png" alt="Dashboard de Análises">
+        <p>Um painel interativo que exibe métricas e estatísticas em tempo real.</p>
+        <button onclick="alert('Mais informações sobre o Dashboard!')">Saiba mais</button>
+    </section>
+    <section id="app">
+        <h2>Interface de Aplicativo</h2>
+        <img src="interface" alt="Interface de Aplicativo">
+        <p>Protótipo de um aplicativo moderno e responsivo para usuários móveis.</p>
+        <button onclick="alert('Mais detalhes sobre a Interface de App!')">Saiba mais</button>
+    </section>
+    <section id="analise">
+        <h2>Análise de Dados</h2>
+        <img src="analise.jpeg" alt="Análise de Dados">
+        <p>Projeto de análise de dados utilizando Python e visualização gráfica.</p>
+        <button onclick="alert('Descubra mais sobre a Análise de Dados!')">Saiba mais</button>
+    </section>
+    <footer>
+        <p>&copy; 2025 Meu Portfólio | Contato: mallu.koerner@sempreceub.com</p>
+    </footer>
+</body>
+</html>

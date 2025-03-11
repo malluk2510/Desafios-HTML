@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas Frequentes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #fabae7;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #fa9fc2;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        h2:hover {
+            color: #3a0e2d;
+            border-color: #6c5ce7;
+        }
+
+        .answer {
+            display: none;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .active + .answer {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Adicionando um efeito suave na transição de exibição */
+        .answer {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .active + .answer {
+            max-height: 500px;
+            opacity: 1;
+            padding: 15px;
+        }
+
+        /* Estilos responsivos para dispositivos menores */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 28px;
+            }
+
+            section h2 {
+                font-size: 20px;
+            }
+
+            .answer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Perguntas Frequentes</h1>
+</header>
+
+<section>
+    <div>
+        <h2 class="question">Pergunta 1: O que é um website?</h2>
+        <p class="answer">Resposta para a pergunta 1: Um website é uma coleção de páginas da web interligadas, que podem ser acessadas através da internet.</p>
+    </div>
+    <div>
+        <h2 class="question">Pergunta 2: Como posso criar um site?</h2>
+        <p class="answer">Resposta para a pergunta 2: Você pode criar um site usando plataformas como WordPress, Wix ou programando diretamente com HTML, CSS e JavaScript.</p>
+    </div>
+    <div>
+        <h2 class="question">Pergunta 3: O que é SEO?</h2>
+        <p class="answer">Resposta para a pergunta 3: SEO (Search Engine Optimization) é o processo de otimizar um site para melhorar seu ranking nos motores de busca, como o Google.</p>
+    </div>
+    <div>
+        <h2 class="question">Pergunta 4: Como posso aumentar o tráfego no meu site?</h2>
+        <p class="answer">Resposta para a pergunta 4: O aumento do tráfego pode ser feito através de estratégias de SEO, marketing de conteúdo, mídia social e anúncios pagos.</p>
+    </div>
+    <div>
+        <h2 class="question">Pergunta 5: O que é um domínio de internet?</h2>
+        <p class="answer">Resposta para a pergunta 5: Um domínio é o nome único e exclusivo que identifica um site na web, como "example.com".</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Perguntas Frequentes. Todos os direitos reservados. | mallu.koerner@sempreceub.com</p>
+</footer>
+
+<script>
+    // Selecionando todas as perguntas
+    const questions = document.querySelectorAll('.question');
+
+    // Adicionando um evento de clique a cada pergunta
+    questions.forEach(question => {
+        question.addEventListener('click', () => {
+            // Remove a classe 'active' de todas as perguntas
+            questions.forEach(q => q.classList.remove('active'));
+            // Adiciona a classe 'active' à pergunta clicada
+            question.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>

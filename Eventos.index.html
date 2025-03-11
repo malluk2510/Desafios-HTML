@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Eventos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #e885f5;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        section {
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #e885f5;
+            border-bottom: 2px solid #e885f5;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .event {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .event:hover {
+            transform: scale(1.05);
+        }
+
+        .event h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .event p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        .event p strong {
+            color: #e885f5;
+        }
+
+        .event-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-top: 40px;
+        }
+
+        .filter-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-buttons button {
+            background-color: #e885f5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .filter-buttons button:hover {
+            background-color: #d475e0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Agenda de Eventos</h1>
+    </header>
+
+    <div class="filter-buttons">
+        <button onclick="showEvents('futuro')">Eventos Futuros</button>
+        <button onclick="showEvents('passado')">Eventos Passados</button>
+        <button onclick="showEvents('todos')">Todos os Eventos</button>
+    </div>
+
+    <section id="eventos-futuros">
+        <h2>Eventos Futuros</h2>
+        <div class="event" onclick="toggleEventDetails(this)">
+            <h3>Evento 1: Conferência de Tecnologia</h3>
+            <p><strong>Data:</strong> 10/04/2025</p>
+            <p><strong>Hora:</strong> 18:00</p>
+            <div class="event-details">
+                <p><strong>Descrição:</strong> Uma conferência sobre as tendências tecnológicas do futuro, com palestras de especialistas da área.</p>
+            </div>
+        </div>
+        <div class="event" onclick="toggleEventDetails(this)">
+            <h3>Evento 2: Workshop de Programação</h3>
+            <p><strong>Data:</strong> 15/04/2025</p>
+            <p><strong>Hora:</strong> 19:00</p>
+            <div class="event-details">
+                <p><strong>Descrição:</strong> Workshop intensivo sobre as melhores práticas em programação e desenvolvimento de software.</p>
+            </div>
+        </div>
+        <div class="event" onclick="toggleEventDetails(this)">
+            <h3>Evento 3: Meetup de Empreendedores</h3>
+            <p><strong>Data:</strong> 20/04/2025</p>
+            <p><strong>Hora:</strong> 20:00</p>
+            <div class="event-details">
+                <p><strong>Descrição:</strong> Meetup para empreendedores compartilharem ideias, experiências e fazerem networking.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="eventos-passados">
+        <h2>Eventos Passados</h2>
+        <div class="event" onclick="toggleEventDetails(this)">
+            <h3>Evento Passado 1: Seminário de Marketing Digital</h3>
+            <p><strong>Data:</strong> 01/04/2025</p>
+            <p><strong>Hora:</strong> 17:00</p>
+            <div class="event-details">
+                <p><strong>Descrição:</strong> Seminário abordando as mais recentes estratégias de marketing digital e como aplicá-las nas empresas.</p>
+            </div>
+        </div>
+        <div class="event" onclick="toggleEventDetails(this)">
+            <h3>Evento Passado 2: Encontro de Desenvolvedores</h3>
+            <p><strong>Data:</strong> 05/04/2025</p>
+            <p><strong>Hora:</strong> 16:00</p>
+            <div class="event-details">
+                <p><strong>Descrição:</strong> Encontro para discutir novas tecnologias e melhores práticas de desenvolvimento de software.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Agenda de Eventos. Todos os direitos reservados.mallu.koerner@sempreceub.com</p>
+    </footer>
+
+    <script>
+        // Função para alternar a exibição dos detalhes do evento
+        function toggleEventDetails(event) {
+            const details = event.querySelector('.event-details');
+            if (details.style.display === 'block') {
+                details.style.display = 'none';
+            } else {
+                details.style.display = 'block';
+            }
+        }
+
+        // Função para filtrar eventos futuros, passados ou todos
+        function showEvents(filter) {
+            const futuros = document.getElementById('eventos-futuros');
+            const passados = document.getElementById('eventos-passados');
+
+            if (filter === 'futuro') {
+                futuros.style.display = "block";
+                passados.style.display = "none";
+            } else if (filter === 'passado') {
+                passados.style.display = "block";
+                futuros.style.display = "none";
+            } else {
+                futuros.style.display = "block";
+                passados.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

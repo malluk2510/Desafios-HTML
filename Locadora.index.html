@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locadora de Filmes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #141414;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-image: url('OIP (2).jpeg');
+            background-size: cover;
+            background-position: center;
+            color: rgb(227, 230, 253);
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            font-weight: 600;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .category {
+            margin-bottom: 30px;
+        }
+
+        .movies {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .movie {
+            background: #222;
+            padding: 15px;
+            border-radius: 8px;
+            width: 250px;
+            flex-shrink: 0;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .movie img {
+            width: 100%;
+            height: 375px; /* Ajusta a altura das imagens para o mesmo tamanho */
+            object-fit: cover; /* Garante que a imagem preencha o espaço sem deformar */
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .movie h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            text-align: center;
+        }
+
+        .modal-content video {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+        }
+
+        .rating input[type="radio"] {
+            display: none;
+        }
+
+        .rating label {
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .rating label:hover,
+        .rating label:hover ~ label,
+        .rating input[type="radio"]:checked ~ label {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Locadora de Filmes</h1>
+</header>
+
+<div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Pesquisar filmes..." oninput="searchMovies()">
+</div>
+
+<div class="container">
+    <div class="category">
+        <h2>Ação</h2>
+        <div class="movies" id="acaoMovies">
+            <div class="movie" onclick="openModal('Vingadores: Ultimato', 'vingadores_ultimato.mp4', 'Heróis se unem para enfrentar uma ameaça global.')">
+                <img src="ultimato.jpeg" alt="Filme de Ação 1">
+                <h3>Vingadores: Ultimato</h3>
+            </div>
+            <div class="movie" onclick="openModal('Mad Max: Estrada da Fúria', 'mad_max_estrada_da_furia.mp4', 'Ação intensa em um mundo pós-apocalíptico.')">
+                <img src="mad.jpeg" alt="Filme de Ação 2">
+                <h3>Mad Max: Estrada da Fúria</h3>
+            </div>
+            <div class="movie" onclick="openModal('John Wick', 'john_wick.mp4', 'Um ex-assassino busca vingança após perder seu cachorro.')">
+                <img src="john.jpeg" alt="Filme de Ação 3">
+                <h3>John Wick</h3>
+            </div>
+            <div class="movie" onclick="openModal('O Protetor', 'o_protetor.mp4', 'Um ex-agente das forças especiais protege uma jovem.')">
+                <img src="protetor.jpeg" alt="Filme de Ação 4">
+                <h3>O Protetor</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="category">
+        <h2>Comédia</h2>
+        <div class="movies" id="comediaMovies">
+            <div class="movie" onclick="openModal('As Branquelas', 'as_branquelas.mp4', 'Dois agentes disfarçados em uma missão hilária.')">
+                <img src="brancas.jpeg" alt="Filme de Comédia 1">
+                <h3>As Branquelas</h3>
+            </div>
+            <div class="movie" onclick="openModal('Norbit', 'norbit.mp4', 'Norbit vive uma vida difícil ao lado de sua esposa controladora.')">
+                <img src="norbit.jpeg" alt="Filme de Comédia 2">
+                <h3>Norbit</h3>
+            </div>
+            <div class="movie" onclick="openModal('Gente Grande', 'gente_grande.mp4', 'Amigos se reencontram e revivem momentos de infância.')">
+                <img src="gente.jpeg" alt="Filme de Comédia 3">
+                <h3>Gente Grande</h3>
+            </div>
+            <div class="movie" onclick="openModal('A Vovozona', 'a_vovozona.mp4', 'Uma avó disfarçada de homem tenta manter a família unida.')">
+                <img src="vovo.jpeg" alt="Filme de Comédia 4">
+                <h3>A Vovozona</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="category">
+        <h2>Drama</h2>
+        <div class="movies" id="dramaMovies">
+            <div class="movie" onclick="openModal('Forrest Gump', 'forrest_gump.mp4', 'A história inspiradora de um homem extraordinário.')">
+                <img src="gump.jpeg" alt="Filme de Drama 1">
+                <h3>Forrest Gump</h3>
+            </div>
+            <div class="movie" onclick="openModal('O Poderoso Chefão', 'o_poderoso_chefao.mp4', 'A saga de uma família mafiosa.')">
+                <img src="chef.jpeg" alt="Filme de Drama 2">
+                <h3>O Poderoso Chefão</h3>
+            </div>
+            <div class="movie" onclick="openModal('Sociedade dos Poetas Mortos', 'sociedade_poetas_mortos.mp4', 'Um professor inspira seus alunos a pensarem de maneira diferente.')">
+                <img src="poeta.jpeg" alt="Filme de Drama 3">
+                <h3>Sociedade dos Poetas Mortos</h3>
+            </div>
+            <div class="movie" onclick="openModal('A Vida é Bela', 'a_vida_e_bela.mp4', 'A história de um pai que usa humor para proteger seu filho.')">
+                <img src="vida.jpeg" alt="Filme de Drama 4">
+                <h3>A Vida é Bela</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="movieModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <video id="modalVideo" controls>
+            <source id="modalSource" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+        </video>
+        <p id="modalDescription"></p>
+        <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+            <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+            <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+            <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+            <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
+        </div>
+    </div>
+</div>
+
+<footer>&copy; 2025 Locadora de Filmes. Todos os direitos reservados.mallu.koerner@sempreceub.com</footer>
+
+<script>
+    function openModal(title, videoSrc, description) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalSource').src = videoSrc;
+        document.getElementById('modalVideo').load();
+        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('movieModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('movieModal').style.display = 'none';
+    }
+
+    function searchMovies() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const allMovies = document.querySelectorAll('.movie');
+
+        allMovies.forEach(movie => {
+            const title = movie.querySelector('h3').innerText.toLowerCase();
+            if (title.includes(query)) {
+                movie.style.display = 'block';
+            } else {
+                movie.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

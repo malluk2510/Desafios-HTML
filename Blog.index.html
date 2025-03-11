@@ -1,0 +1,220 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <style>
+        /* Reset de margens e paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #262626;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            max-width: 100%;
+        }
+
+        header {
+            background-color: #fff;
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        section {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        article {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        section h3 {
+            font-size: 22px;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .comentario {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-left: 5px solid #37c58f;
+            margin-bottom: 20px;
+        }
+
+        .comentario h4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .comentario p {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        form label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #37c58f;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #37c58f;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #32b282;
+        }
+
+        #comentarios-enviados {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+            border-left: 6px solid #37c58f;
+        }
+
+        /* Adiciona espaço entre as seções */
+        section + section {
+            margin-top: 40px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Koerner Blog</h1>
+    </header>
+
+    <section>
+        <article>
+            <h2>Conectando moda com autoestima</h2>
+            <p>O estilo pessoal também está intimamente ligado à forma como nos vemos. Quando usamos roupas que nos fazem sentir bem, nossa confiança aumenta. 
+                Priorize o conforto, nada melhor do que se sentir confortável no que você está vestindo. Não existe nada mais atraente do que a confiança gerada pelo conforto.</p>
+
+            <p>Seja ousada, mas sem perder sua essência. Não tenha medo de arriscar com novas tendências, mas sempre faça isso de uma maneira que reflita quem você é.</p>
+        </article>
+
+        <section>
+            <h3>Comentários</h3>
+            
+            <!-- Comentário Fake 1 -->
+            <div class="comentario">
+                <h4>Juliana Silva</h4>
+                <p>Amei o post! Realmente, se sentir confortável com o que vestimos é essencial para a autoestima. Vou aplicar isso no meu dia a dia!</p>
+            </div>
+
+            <!-- Comentário Fake 2 -->
+            <div class="comentario">
+                <h4>Ricardo Almeida</h4>
+                <p>Incrível como o estilo pode refletir quem somos de verdade. O conselho de ousar, mas sem perder nossa essência é perfeito. Vou tentar mais disso!</p>
+            </div>
+
+            <!-- Comentário Fake 3 -->
+            <div class="comentario">
+                <h4>Beatriz Costa</h4>
+                <p>Esse post chegou na hora certa! Preciso muito me sentir mais confiante nas minhas escolhas de moda. Obrigada pelos insights!</p>
+            </div>
+
+            <form>
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="comentario">Comentário:</label>
+                <textarea id="comentario" name="comentario" rows="4" required></textarea>
+
+                <input type="submit" value="Enviar">
+            </form>
+
+            
+
+    <footer>
+        <p>&copy; 2025 Koerner Blog | Todos os direitos reservados</p>
+    </footer>
+</body>
+</html>

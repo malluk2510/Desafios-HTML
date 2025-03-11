@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a14;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-image: url('voyeur.jpg');
+            background-size: cover;
+            background-position: center;
+            color: rgb(227, 230, 253);
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        header input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        section {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .exhibition-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-details {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .photo-details img {
+            width: 40%;
+            float: left;
+            margin-right: 20px;
+            border-radius: 10px;
+        }
+
+        .photo-details p {
+            font-size: 16px;
+        }
+
+        .close-btn {
+            display: block;
+            text-align: right;
+            font-size: 18px;
+            cursor: pointer;
+            color: red;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #222;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Galeria de Exposição de Arte</h1>
+    <input type="text" id="searchInput" placeholder="Pesquise pelo nome do artista ou obra" onkeyup="searchGallery()">
+</header>
+
+<section>
+    <div class="exhibition-grid" id="galleryGrid">
+        <div class="gallery-item" data-name="Salvador Dalí A Persistencia da Memoria" onclick="showDetails('memoria.jpg', ' A Persistência da Memória', 'Estilo surrealismo, feita no período surrealista. Localizada no Museu de Ate Moderna.', '1931')">
+            <img src="memoria.jpg" alt="Salvador Dalí A Persistencia da Memoria">
+        </div>
+        <div class="gallery-item" data-name="Salvador Dalí Landscape" onclick="showDetails('land.jpg', 'Landscape', 'Estilo impressionismo, genero da obra: Paisagem.', '1916')">
+            <img src="land.jpg" alt="Salvador Dalí Landscape">
+        </div>
+        <div class="gallery-item" data-name="Salvador Dalí The Voyeur" onclick="showDetails('voyeur.jpg', 'The Voyeur', 'Estilo cubismo, expressionismo. Pintura de gênero, localizada atualmente no Teatro-Museu Dalí.', '1917-1927')">
+            <img src="voyeur.jpg" alt="Salvador Dalí The Voyeur">
+        </div>
+        <div class="gallery-item" data-name="Salvador Dalí Still Life" onclick="showDetails('life.jpg', 'Still Life', 'Estilo cubismo, gênero Natureza-morta.', '1917-1927')">
+            <img src="life.jpg" alt="Salvador Dalí Still Life">
+        </div>
+        <div class="gallery-item" data-name="Salvador Dalí Port Of Cadaques (Night)" onclick="showDetails('port.jpg', 'Port Of Cadaques (Night)', 'Estilo pós-impressionista, gênero Arte marinha, localizado atualmente no Salvador Dali Museum', '1917-1927')">
+            <img src="port.jpg" alt="Salvador Dalí Port Of Cadaques (Night)">
+        </div>
+        <div class="gallery-item" data-name="Salvador Dalí Las Galas of Port Lligat" onclick="showDetails('galas.jpg', 'Las Galas of Port Lligat', 'Estilo surrealista, feita no período clássico, gênero Arte marinha.', '1941-1989')">
+            <img src="galas.jpg" alt="Salvador Dalí Las Galas of Port Lligat">
+        </div>
+        <div class="gallery-item" data-name="Picasso Vieux Guitariste Aveugle" onclick="showDetails('guitar.jpg', 'Vieux Guitariste Aveugle', 'Estilo expressionismo feita no período Azul, gênero pintira de gênero, localizada no Art Institute of Chicago', '1903')">
+            <img src="guitar.jpg" alt="Picasso Vieux Guitariste Aveugle">
+        </div>
+        <div class="gallery-item" data-name="Picasso Figures at the Seaside" onclick="showDetails('seaside.jpg', 'Figures at the Seaside', 'Estilo surrealismo, feita no período neoclassicista e surrealista, gênero pintura de gênero', '1931')">
+            <img src="seaside.jpg" alt="Picasso Figures at the Seaside">
+        </div>
+        <div class="gallery-item" data-name="Picasso Still Life With pitcher and apples" onclick="showDetails('still.jpg', 'Still Life With pitcher and apples', 'Estilo neoclassicista, feita no período cubista, gênero Natureza-morta', '1919')">
+            <img src="still.jpg" alt="Picasso Still Life With pitcher and apples">
+        </div>
+        <div class="gallery-item" data-name="Picasso Birds Of a Feather" onclick="showDetails('birds.jpg', 'Birds Of a Feather', 'Estilo surrealista, feita no período neoclassicista e surrealista, gênero symbolic painting', '1920')">
+            <img src="birds.jpg" alt="Picasso Birds Of a Feather">
+        </div>
+        <div class="gallery-item" data-name="Picasso Study Of Cannes" onclick="showDetails('cannes.jpg', 'Study Of Cannes', 'Estilo surrealista, feita no periodo neoclassicista e surrealista, gênero nude painting', '1927')">
+            <img src="cannes.jpg" alt="Picasso Study Of Cannes">
+        </div>
+        <div class="gallery-item" data-name="Picasso Buste of Young Woman (Marie Therese Walter)" onclick="showDetails('buste.jpg', 'Buste of Young Woman (Marie Therese Walter)', 'Estilo cubista e surrealista, feita no período neoclassicista e surrealista, gênero portrait', '1926')">
+            <img src="buste.jpg" alt="Picasso  Buste of Young Woman (Marie Therese Walter)">
+        </div>
+        <div class="gallery-item" data-name="Van Gogh Noite Estrelada" onclick="showDetails('noite.webp', 'Noite Estrelada', 'Oleo sobre tela, localizado no Museu de Arte Moderna', '1889')">
+            <img src="noite.webp" alt="Van Gogh Noite Estrelada">
+        </div>
+        <div class="gallery-item" data-name="Van Gogh Lirios" onclick="showDetails('Lirios-Van-Gogh.jpg', 'Lírios', 'Oleo sobre tela, localizada no museu J. Paul Getty', '1889')">
+            <img src="Lirios-Van-Gogh.jpg" alt="Van Gogh Lirios">
+        </div>
+        <div class="gallery-item" data-name="Van Gogh Os Comedores de Batata" onclick="showDetails('batata.jpg', 'Os Comedores de Batata', 'Oleo sobre tela, localizada no museu Van Gogh.', '1885')">
+            <img src="batata.jpg" alt="Van Gogh Os Comedores de Batata">
+        </div>
+        <div class="gallery-item" data-name="Van Gogh Os Girassois" onclick="showDetails('gira.jpeg', 'Os Girassois', 'Estilo oleo sobre tela, loalizado no Neue Pinakothek.', '1888')">
+            <img src="gira.jpeg" alt="Van Gogh Os Girassois">
+        </div>
+        <div class="gallery-item" data-name="Van Gogh Autorretrato" onclick="showDetails('auto.jpg', 'Autorretrato', 'Estilo oleo sobre tela, localizado no Museu de Orsay.', '1889')">
+            <img src="auto.jpg" alt="Van Gogh Autorretrato">
+        </div>
+        <div class="gallery-item" data-name="Van Gogh Quarto em Arles" onclick="showDetails('arles.jpg', 'Quarto em Arles', 'Estilo oleo sobre tela, localizado no The Art Institute of Chicago.', '1888')">
+            <img src="arles.jpg" alt="Van Gogh Quarto em Arles">
+        </div>
+    </div>
+</section>
+
+<div class="photo-details" id="photoDetails">
+    <span class="close-btn" onclick="closeDetails()">&times;</span>
+    <img id="detailImage" src="" alt="">
+    <div>
+        <p><strong>Nome:</strong> <span id="detailName"></span></p>
+        <p><strong>Descrição:</strong> <span id="detailDescription"></span></p>
+        <p><strong>Data:</strong> <span id="detailDate"></span></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2025 Galeria de Exposição de Arte. Todos os direitos reservados.mallu.koerner@sempreceub.com</p>
+</footer>
+
+<script>
+    function showDetails(image, name, description, date) {
+        document.getElementById('detailImage').src = image;
+        document.getElementById('detailName').textContent = name;
+        document.getElementById('detailDescription').textContent = description;
+        document.getElementById('detailDate').textContent = date;
+        document.getElementById('photoDetails').style.display = 'block';
+    }
+
+    function closeDetails() {
+        document.getElementById('photoDetails').style.display = 'none';
+    }
+
+    function searchGallery() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const items = document.querySelectorAll('.gallery-item');
+
+        items.forEach(item => {
+            const name = item.getAttribute('data-name').toLowerCase();
+            if (name.includes(input)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
